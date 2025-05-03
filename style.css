@@ -78,6 +78,8 @@ button {
     flex-direction: column;
     justify-content: center;
     color: white;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.4);
+    cursor: pointer;
 }
 
 .card-header {
@@ -85,7 +87,16 @@ button {
 }
 
 .pokemon-card img{
-    height: 160px;
-    width: 160px; 
+    height: 140px;
+    width: 140px; 
     filter: contrast(1.1) brightness(1.05) drop-shadow(5px 5px 10px rgba(0,0,0,0.6));
+}
+
+.pokemon-type {
+  text-align: center;
+  width: 64px;
+  padding: 4px;
+  font-size: 18px;
+  border-radius: 13.5px;
+  border: 1px solid rgba(0,0,0,0.3);
 }
