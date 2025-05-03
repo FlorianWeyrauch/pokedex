@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- ICON TITLE -->
+    <link rel="icon" href="" type="image/icon type" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./style/standard.css" />
+
+    <!-- JS -->
+    <script src="./script.js"></script>
+    <script src="./scripts/template.js"></script>
+    <script src="./scripts/help.js"></script>
+  </head>
+  <body onload="init()">
+    <header></header>
+    <main class="d-flex-fd-c">
+      <section class="d-flex-wrap d-flex-c" id="content">
+      </section>
+      <button onclick="loadPokemon()">Load more</button>
+    </main>
+    <footer></footer>
+    <div id="loading_spinner" class="loading-spinner d-none d-flex-c-fd-c ">
+      <img class="img-loading-spinner" src="./assets/icon/pokeball.png" alt="Pokeball">
+      <span>Load..</span>
+    </div>
+  </body>
+</html>
+
+
+

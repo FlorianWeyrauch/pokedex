@@ -1,0 +1,75 @@
+let pokemonUrls = [];
+let offset = 0;
+const limit = 20;
+
+async function init() {
+    await getPokemonUrl();
+    console.log(pokemonUrls);
+    await loadPokemon();
+}
+
+
+//holt sich die gesamten pokemonUrls aus der Api und speichert diese in einer globalen Liste ab
+async function getPokemonUrl() {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0`);
+    const data = await response.json();
+    pokemonUrls = data.results;
+}
+
+//holt sich die daten aus der url der einzelnen Pokemon 
+//immer nur 20 Stueck
+async function getPokemonData(url) {
+    const response = await fetch(url);
+    return response.json();
+}
+
+// läd die ersten 20 Pokemon und gibt die geladen daten als liste zurück
+async function loadCurrentPokemon(startIndex, endIndex) {
+    const datas = [];
+    const slice = pokemonUrls.slice(startIndex, endIndex);
+
+    for (let i = 0; i < slice.length; i++) {
+        try {
+            const data = await getPokemonData(slice[i].url);
+            datas.push(data);
+        } catch (err) {
+            console.error(err);
+        }
+    }
+    return datas;
+}
+
+async function loadPokemon() {
+    toggleLoadingSpinner();
+    const neueDaten = await loadCurrentPokemon(offset, offset + limit);
+    showPokemon(neueDaten);
+    offset += limit;
+    toggleLoadingSpinner();
+}
+
+function showPokemon(pokemonData) {
+    let listContainer = document.getElementById("content");
+
+    for (let i = 0; i < pokemonData.length; i++) {
+        const card = document.createElement('div');
+        card.className = 'pokemon-card';
+        card.innerHTML = templatePokemonCard(pokemonData[i]);
+        listContainer.appendChild(card);
+
+        showPokemonType(pokemonData[i]);
+    }
+}
+
+
+function toggleLoadingSpinner() {
+    let load = document.getElementById("loading_spinner");
+    load.classList.toggle('d-none');
+}
+
+function showPokemonType(pokemon) {
+    let typeContent = document.getElementById("card_type_" + pokemon.id);
+    pokemon.types.forEach(element => {
+        typeContent.innerHTML += `<span class="pokemon-type">${capitalizeFirstLetter(element.type.name)}</span> `;
+    });
+}
+
