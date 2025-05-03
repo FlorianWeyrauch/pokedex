@@ -8,6 +8,28 @@ async function init() {
     await loadPokemon();
 }
 
+const typeColors = {
+    normal: '#A8A77A',
+    fire: '#EE8130',
+    water: '#6390F0',
+    electric: '#F7D02C',
+    grass: '#7AC74C',
+    ice: '#96D9D6',
+    fighting: '#C22E28',
+    poison: '#A33EA1',
+    ground: '#E2BF65',
+    flying: '#A98FF3',
+    psychic: '#F95587',
+    bug: '#A6B91A',
+    rock: '#B6A136',
+    ghost: '#735797',
+    dragon: '#6F35FC',
+    dark: '#705746',
+    steel: '#B7B7CE',
+    fairy: '#D685AD'
+};
+
+
 
 //holt sich die gesamten pokemonUrls aus der Api und speichert diese in einer globalen Liste ab
 async function getPokemonUrl() {
@@ -41,8 +63,8 @@ async function loadCurrentPokemon(startIndex, endIndex) {
 
 async function loadPokemon() {
     toggleLoadingSpinner();
-    const neueDaten = await loadCurrentPokemon(offset, offset + limit);
-    showPokemon(neueDaten);
+    const newData = await loadCurrentPokemon(offset, offset + limit);
+    showPokemon(newData);
     offset += limit;
     toggleLoadingSpinner();
 }
@@ -51,20 +73,20 @@ function showPokemon(pokemonData) {
     let listContainer = document.getElementById("content");
 
     for (let i = 0; i < pokemonData.length; i++) {
+        const pokemon = pokemonData[i];
+        const mainType = pokemon.types[0].type.name;
+        const bgColor = typeColors[mainType];
+
         const card = document.createElement('div');
         card.className = 'pokemon-card';
-        card.innerHTML = templatePokemonCard(pokemonData[i]);
+        card.style.backgroundColor = bgColor;
+        card.innerHTML = templatePokemonCard(pokemon);
         listContainer.appendChild(card);
 
-        showPokemonType(pokemonData[i]);
+        showPokemonType(pokemon);
     }
 }
 
-
-function toggleLoadingSpinner() {
-    let load = document.getElementById("loading_spinner");
-    load.classList.toggle('d-none');
-}
 
 function showPokemonType(pokemon) {
     let typeContent = document.getElementById("card_type_" + pokemon.id);

@@ -18,6 +18,7 @@ header, footer {
 header {
     position: sticky;
     top: 0;
+    z-index: 999;
 }
 
 section {
@@ -71,14 +72,20 @@ button {
 .pokemon-card {
     height: 240px;
     width: 240px;
-    border: 2px solid;
+    border: 2px solid rgba(0,0,0,0.4);
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    color: white;
+}
+
+.card-header {
+  font-size: 24px;
 }
 
 .pokemon-card img{
     height: 160px;
-    width: 160px;  
+    width: 160px; 
+    filter: contrast(1.1) brightness(1.05) drop-shadow(5px 5px 10px rgba(0,0,0,0.6));
 }
