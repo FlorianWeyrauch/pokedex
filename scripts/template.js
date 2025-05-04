@@ -14,9 +14,8 @@ function templatePokemonCard(pokemon) {
 }
 
 function templatePokemonOverlay(pokemon) {
-    const mainType = pokemon.types[0].type.name;
     return `
-        <div class="pokemon-overlay-card d-flex-fd-c ${mainType}">
+        <div class="pokemon-overlay-card d-flex-fd-c ${pokemon.types[0].type.name}">
             <div class="w100 d-flex-fe">
                 <span class="overlay-close-btn" onclick="closeOverlay()">X</span>
             </div>
@@ -25,7 +24,7 @@ function templatePokemonOverlay(pokemon) {
                 <p>#${pokemon.id}</p>
             </div>
             <img src="${pokemon.sprites.other.home.front_default}" alt="${pokemon.name}">
-            <div class="w100 d-flex-sb pokemon-overlay-description">
+            <div class="w100 d-flex-c pokemon-overlay-description">
                 <p onclick="">About</p>
                 <p>Base Stats</p>
                 <p>Evolution</p>

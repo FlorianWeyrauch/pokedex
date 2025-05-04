@@ -77,6 +77,7 @@ function showPokemonType(pokemon) {
 }
 
 function openOverlay(pokemon) {
+    document.body.classList.add("scroll_none");
     let singlePokemonOverlay = document.getElementById('overlay');
     singlePokemonOverlay.classList.remove('d-none');
     singlePokemonOverlay.innerHTML = "";
@@ -86,6 +87,7 @@ function openOverlay(pokemon) {
 function closeOverlay() {
     let singlePokemonOverlay = document.getElementById('overlay');
     singlePokemonOverlay.classList.add('d-none');
+    document.body.classList.remove("scroll_none");
 }
 
 function showPokemonAbout(pokemon) {

@@ -4,6 +4,7 @@
   scroll-behavior: smooth;
 }
 
+
 a {
   text-decoration: none;
   cursor: pointer;
@@ -86,6 +87,10 @@ input:hover {
 
 .text-center {
   text-align: center;
+}
+
+.scroll_none{
+  overflow: hidden;
 }
 
 *::-webkit-scrollbar {
