@@ -20,30 +20,40 @@
     <script src="./scripts/help.js"></script>
   </head>
   <body onload="init()">
+    <!-- Header -->
     <header class="d-flex-sb">
       <a class="d-flex-c" href="./index.html">
         <img src="./assets/img/Pokemon-font.png" alt="Pokemon">
       </a>
       <input type="text" placeholder="Search...">
     </header>
+
+    <!-- Main -->
     <main class="d-flex-fd-c">
       <section class="d-flex-wrap d-flex-c" id="content">
       </section>
       <div class="d-flex-c">
         <button class="load-btn" onclick="loadPokemon()">Load more</button>
       </div>
-
     </main>
+
+    <div id="overlay" class="d-flex-c d-none"></div>
+
+    <!-- Loading spinner -->
     <div id="loading_spinner" class="loading-spinner d-none d-flex-c-fd-c ">
       <img class="img-loading-spinner" src="./assets/icon/pokeball.png" alt="Pokeball">
       <span class="loading-spinner-description">Loading data..</span>
     </div>
+    
+    <!-- Footer -->
     <footer class="d-flex-c">
       <span>&copy; 2025 Florian Weyrauch. Alle Rechte vorbehalten.
       </span>
     </footer>
   </body>
 </html>
+
+
 
 
 

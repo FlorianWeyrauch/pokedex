@@ -6,3 +6,7 @@ function toggleLoadingSpinner() {
     let load = document.getElementById("loading_spinner");
     load.classList.toggle('d-none');
 }
+
+function calculateHeightWeight(n) {
+    return n / 10;
+}

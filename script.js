@@ -35,6 +35,8 @@ async function loadCurrentPokemon(startIndex, endIndex) {
             console.error(err);
         }
     }
+    console.log(datas);
+
     return datas;
 }
 
@@ -59,8 +61,7 @@ function showPokemon(pokemonData) {
         const mainType = pokemon.types[0].type.name;
         const card = document.createElement('div');
         card.className = `pokemon-card ${mainType}`;
-        card.onclick = () => console.log(pokemon.name);
-
+        card.onclick = () => openOverlay(pokemon);
         card.innerHTML = templatePokemonCard(pokemon);
         listContainer.appendChild(card);
         showPokemonType(pokemon);
@@ -75,3 +76,20 @@ function showPokemonType(pokemon) {
     });
 }
 
+function openOverlay(pokemon) {
+    let singlePokemonOverlay = document.getElementById('overlay');
+    singlePokemonOverlay.classList.remove('d-none');
+    singlePokemonOverlay.innerHTML = "";
+    singlePokemonOverlay.innerHTML = templatePokemonOverlay(pokemon);
+}
+
+function closeOverlay() {
+    let singlePokemonOverlay = document.getElementById('overlay');
+    singlePokemonOverlay.classList.add('d-none');
+}
+
+function showPokemonAbout(pokemon) {
+    let pokemonDescription = document.getElementById('pokemon-description-content');
+    pokemonDescription.innerHTML = "";
+    pokemonDescription.innerHTML = templateAboutPokemon(pokemon);
+}
