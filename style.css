@@ -1,13 +1,6 @@
-html, body {
-    min-height: calc(100vh - 200px);
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
 main {
+  min-height: calc(100vh - 200px);
   background-color: #0D3240;
-  flex: 1;
     padding: 80px;
     max-width: 1920px;
     margin: 0 auto;
@@ -17,7 +10,7 @@ header, footer {
     padding: 0 100px;
     height: 100px;
     width: 100%;
-    background-color: #E0191E;
+    background-color: var(--primary-color);
 }
 
 header {
@@ -32,7 +25,7 @@ header img {
 
 footer {
   font-size: 18px;
-  color: #F1F1F1;
+  color: var(--text-color);
   margin-top: auto;
 }
 
@@ -46,15 +39,18 @@ button {
   font-size: 16px;
   border-radius: 25px;
   border: none;
-  background-color: #E0191E;
-  color: #F1F1F1;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  box-shadow: 0 0 0 2px white; /* ← weiße, scharfe Umrandung */
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 button:hover {
   background-color: #e01920e1;
+  box-shadow: 0 0 8px 2px white; /* ← Glow-Effekt beim Hover */
 }
+
+
 
 .load-btn {
   margin-top: 40px;
@@ -68,7 +64,7 @@ button:hover {
     height: 100vh;
     width: 100%;
     background: rgba(0, 0, 0, 0.9);
-    color: white;
+    color: var(--text-color);
   }
 
 .img-loading-spinner {
@@ -100,8 +96,13 @@ button:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: white;
+    color: var(--text-color);
     cursor: pointer;
+}
+
+.pokemon-card:hover {
+  scale: 1.03;
+  transition: ease-in-out 150ms;
 }
 
 .card-header {
@@ -140,5 +141,5 @@ input {
 }
 
 input:focus {
-  box-shadow: 0 0 0 3px #F9C932;
+  box-shadow: 0 0 0 3px var(--accent-color);
 }

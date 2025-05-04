@@ -1,3 +1,10 @@
+:root {
+    --primary-color: #E0191E;
+    --text-color: white;
+    --accent-color: #F9C932;
+  }
+  
+
 .normal  { 
     background-color: #A8A77A;
     box-shadow: 0 0 8px #A8A77A;
