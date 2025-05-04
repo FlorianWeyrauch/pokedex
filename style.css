@@ -155,16 +155,44 @@ button:hover {
   background-color: rgba(0,0,0,0.6);
 }
 
+.pokemon-title {
+  padding:  0 0 0 43%;
+  border-radius: 12px 12px 0px 0px;
+  background-color: var(--bg-color);
+}
+
 .overlay-close-btn{
   cursor: pointer;
   color: var(--text-color);
-  font-size: 32px;
+  font-size: 24px;
   font-weight: bold;
   padding: 8px;
+  border-radius: 0px 8px 0px 0px;
+  /* border: 1px solid var(--bg-color); */
+}
+
+.overlay-close-btn:hover {
+  transition: ease-in-out 125ms;
   background-color: var(--primary-color);
 }
 
 .pokemon-overlay-card img{
   height: 300px;
   width: 300px;
+}
+
+.pokemon-overlay-data {
+  color: var(--bg-color);
+  height: 100%;
+  width: 290px;
+  margin-bottom: 10px;
+  background-color: var(--text-color);
+  border-radius: 12px;
+}
+
+.pokemon-overlay-description {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-radius: 12px 12px 0px 0px;
+  padding: 8px 0 8px 0;
 }

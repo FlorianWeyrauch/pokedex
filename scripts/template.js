@@ -16,30 +16,33 @@ function templatePokemonCard(pokemon) {
 function templatePokemonOverlay(pokemon) {
     return `
         <div class="pokemon-overlay-card d-flex-fd-c ${pokemon.types[0].type.name}">
-            <div class="w100 d-flex-fe">
+            <div class="pokemon-title w100 d-flex-sb">
+                <p class="fs-b"># ${pokemon.id}</p>
                 <span class="overlay-close-btn" onclick="closeOverlay()">X</span>
             </div>
-            <div class="w100 d-flex-sb">
-                <p>${capitalizeFirstLetter(pokemon.name)}</p>
-                <p>#${pokemon.id}</p>
-            </div>
             <img src="${pokemon.sprites.other.home.front_default}" alt="${pokemon.name}">
-            <div class="w100 d-flex-c pokemon-overlay-description">
-                <p onclick="">About</p>
-                <p>Base Stats</p>
-                <p>Evolution</p>
-            </div>
-            <div id="pokemon-description-content">
-                <table>
-                    <tr>
-                        <td>Height: </td>
-                        <td>${calculateHeightWeight(pokemon.height)}m</td>
-                    </tr>
-                    <tr>
-                        <td>Weight: </td>
-                        <td>${calculateHeightWeight(pokemon.weight)}kg</td>
-                    </tr>
-                </table>
+            <div class="pokemon-overlay-data">
+                <div class="w100 d-flex-sa pokemon-overlay-description">
+                    <p onclick="">About</p>
+                    <p>Base Stats</p>
+                    <p>Evolution</p>
+                </div>
+                <div id="pokemon-description-content">
+                    <table>
+                        <tr>
+                            <td>Name: </td>
+                            <td>${capitalizeFirstLetter(pokemon.name)}</td>
+                        </tr>
+                        <tr>
+                            <td>Height: </td>
+                            <td>${calculateHeightWeight(pokemon.height)}m</td>
+                        </tr>
+                        <tr>
+                            <td>Weight: </td>
+                            <td>${calculateHeightWeight(pokemon.weight)}kg</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     `;

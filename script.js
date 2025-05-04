@@ -8,21 +8,20 @@ async function init() {
     await loadPokemon();
 }
 
-//holt sich die gesamten pokemonUrls aus der Api und speichert diese in einer globalen Liste ab
+// Fetches all Pokémon URLs from the API and stores them in a global list
 async function getPokemonUrl() {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0`);
     const data = await response.json();
     pokemonUrls = data.results;
 }
 
-//holt sich die daten aus der url der einzelnen Pokemon 
-//immer nur 20 Stueck
+// Fetches data from a single Pokémon URL
 async function getPokemonData(url) {
     const response = await fetch(url);
     return response.json();
 }
 
-// läd die ersten 20 Pokemon und gibt die geladen daten als liste zurück
+// Loads a batch of Pokémon data (20 at a time) based on the current index range
 async function loadCurrentPokemon(startIndex, endIndex) {
     const datas = [];
     const slice = pokemonUrls.slice(startIndex, endIndex);
@@ -40,6 +39,7 @@ async function loadCurrentPokemon(startIndex, endIndex) {
     return datas;
 }
 
+// Handles loading and displaying the next set of Pokémon cards
 async function loadPokemon() {
     let listContainer = document.getElementById("content");
     toggleLoadingSpinner();
@@ -49,11 +49,12 @@ async function loadPokemon() {
         offset += limit;
     } catch (error) {
         console.log(error);
-        listContainer.innerHTML = "Das ist ein Fehler unterlaufen: " + error;
+        listContainer.innerHTML = "An error occurred while loading Pokémon: " + error;
     }
     toggleLoadingSpinner();
 }
 
+// Displays a list of Pokémon cards on the page
 function showPokemon(pokemonData) {
     let listContainer = document.getElementById("content");
     for (let i = 0; i < pokemonData.length; i++) {
@@ -68,7 +69,7 @@ function showPokemon(pokemonData) {
     }
 }
 
-
+// Displays the type(s) of a given Pokémon in its card
 function showPokemonType(pokemon) {
     let typeContent = document.getElementById("card_type_" + pokemon.id);
     pokemon.types.forEach(element => {
@@ -76,6 +77,7 @@ function showPokemonType(pokemon) {
     });
 }
 
+// Opens an overlay with detailed information about the selected Pokémon
 function openOverlay(pokemon) {
     document.body.classList.add("scroll_none");
     let singlePokemonOverlay = document.getElementById('overlay');
@@ -84,12 +86,14 @@ function openOverlay(pokemon) {
     singlePokemonOverlay.innerHTML = templatePokemonOverlay(pokemon);
 }
 
+// Closes the Pokémon details overlay
 function closeOverlay() {
     let singlePokemonOverlay = document.getElementById('overlay');
     singlePokemonOverlay.classList.add('d-none');
     document.body.classList.remove("scroll_none");
 }
 
+// Displays the "About" section of the selected Pokémon in the overlay
 function showPokemonAbout(pokemon) {
     let pokemonDescription = document.getElementById('pokemon-description-content');
     pokemonDescription.innerHTML = "";

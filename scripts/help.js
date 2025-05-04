@@ -10,3 +10,7 @@ function toggleLoadingSpinner() {
 function calculateHeightWeight(n) {
     return n / 10;
 }
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}

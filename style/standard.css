@@ -70,6 +70,7 @@ button {
 }
 
 input {
+  color: var(--bg-color);
   width: 300px;
   padding: 12px 16px;
   font-size: 16px;
@@ -83,6 +84,11 @@ input {
 
 input:hover {
   box-shadow: 0 0 0 3px var(--accent-color);
+}
+
+.fs-b {
+  font-weight: bold;
+  font-size: 22px;
 }
 
 .text-center {
