@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Pokedex</title>
 
     <!-- ICON TITLE -->
-    <link rel="icon" href="" type="image/icon type" />
+    <link rel="icon" href="./assets/icon/pokeball.png" type="image/icon type" />
 
     <!-- CSS -->
     <link rel="stylesheet" href="./style.css" />
@@ -19,19 +19,25 @@
     <script src="./scripts/help.js"></script>
   </head>
   <body onload="init()">
-    <header></header>
+    <header class="d-flex-sb">
+      <img src="./assets/img/Pokemon-font.png" alt="Pokemon">
+      <input type="text" placeholder="Search...">
+    </header>
     <main class="d-flex-fd-c">
       <section class="d-flex-wrap d-flex-c" id="content">
       </section>
       <div class="d-flex-c">
-        <button onclick="loadPokemon()">Load more</button>
+        <button class="load-btn" onclick="loadPokemon()">Load more</button>
       </div>
 
     </main>
-    <footer></footer>
+    <footer class="d-flex-c">
+      <span>&copy; 2025 Florian Weyrauch. Alle Rechte vorbehalten.
+      </span>
+    </footer>
     <div id="loading_spinner" class="loading-spinner d-none d-flex-c-fd-c ">
       <img class="img-loading-spinner" src="./assets/icon/pokeball.png" alt="Pokeball">
-      <span>Load more..</span>
+      <span class="loading-spinner-description">Loading data..</span>
     </div>
   </body>
 </html>

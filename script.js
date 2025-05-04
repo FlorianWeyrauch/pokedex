@@ -39,10 +39,16 @@ async function loadCurrentPokemon(startIndex, endIndex) {
 }
 
 async function loadPokemon() {
+    let listContainer = document.getElementById("content");
     toggleLoadingSpinner();
-    const newData = await loadCurrentPokemon(offset, offset + limit);
-    showPokemon(newData);
-    offset += limit;
+    try {
+        const newData = await loadCurrentPokemon(offset, offset + limit);
+        showPokemon(newData);
+        offset += limit;
+    } catch (error) {
+        console.log(error);
+        listContainer.innerHTML = "Das ist ein Fehler unterlaufen: " + error;
+    }
     toggleLoadingSpinner();
 }
 
@@ -53,7 +59,7 @@ function showPokemon(pokemonData) {
         const pokemon = pokemonData[i];
         const mainType = pokemon.types[0].type.name;
         const card = document.createElement('div');
-        card.className = `pokemon-card ${mainType}`; // z. B. "pokemon-card grass"
+        card.className = `pokemon-card ${mainType}`;
         card.innerHTML = templatePokemonCard(pokemon);
         listContainer.appendChild(card);
 
