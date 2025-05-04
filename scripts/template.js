@@ -3,7 +3,7 @@
 function templatePokemonCard(pokemon) {
     return `
         <div class="card-header d-flex-sa">
-            <p>${capitalizeFirstLetter(pokemon.name)}</p>
+            <p><b>${capitalizeFirstLetter(pokemon.name)}</b></p>
             <p>#${pokemon.id}</p>
         </div>
         <div class="d-flex-sb">

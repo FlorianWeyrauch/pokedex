@@ -54,15 +54,15 @@ async function loadPokemon() {
 
 function showPokemon(pokemonData) {
     let listContainer = document.getElementById("content");
-
     for (let i = 0; i < pokemonData.length; i++) {
         const pokemon = pokemonData[i];
         const mainType = pokemon.types[0].type.name;
         const card = document.createElement('div');
         card.className = `pokemon-card ${mainType}`;
+        card.onclick = () => console.log(pokemon.name);
+
         card.innerHTML = templatePokemonCard(pokemon);
         listContainer.appendChild(card);
-
         showPokemonType(pokemon);
     }
 }
