@@ -10,6 +10,10 @@ a {
   cursor: pointer;
 }
 
+p {
+  cursor: pointer;
+}
+
 .max-content {
   max-width: 1440px;
 }

@@ -27,7 +27,7 @@ function templatePokemonOverlay(pokemon) {
                     <p>Base Stats</p>
                     <p>Evolution</p>
                 </div>
-                <div id="pokemon-description-content">
+                <div class="pokemon-overlay-description-content" id="pokemon-description-content">
                     <table>
                         <tr>
                             <td>Name: </td>

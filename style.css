@@ -149,8 +149,9 @@ button:hover {
   color: var(--text-color);
 }
 .pokemon-overlay-card {
-  width: 310px;
-  height: 560px;
+  margin: 0 8px;
+  width: 500px;
+  height: 620px;
   border-radius: 12px;
   background-color: rgba(0,0,0,0.6);
 }
@@ -179,13 +180,15 @@ button:hover {
 .pokemon-overlay-card img{
   height: 300px;
   width: 300px;
+  margin-bottom: 24px;
+  filter: contrast(1.1) brightness(1.05) drop-shadow(5px 5px 10px rgba(0,0,0,0.6));
 }
 
 .pokemon-overlay-data {
   color: var(--bg-color);
   height: 100%;
-  width: 290px;
-  margin-bottom: 10px;
+  width: 97%;
+  margin-bottom: 8px;
   background-color: var(--text-color);
   border-radius: 12px;
 }
@@ -195,4 +198,20 @@ button:hover {
   color: var(--text-color);
   border-radius: 12px 12px 0px 0px;
   padding: 8px 0 8px 0;
+}
+
+.pokemon-overlay-description p:hover {
+  color: var(--accent-color);
+  transition: ease-in-out 200ms;
+}
+
+.pokemon-overlay-description-content {
+  height: 80%;
+  width: 100%;
+}
+
+@media (max-width: 850px){
+ header input {
+    display: none;
+  }
 }
