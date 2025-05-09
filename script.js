@@ -1,4 +1,5 @@
 let pokemonUrls = [];
+let currentPokemonIndex = 0;
 let offset = 0;
 const limit = 20;
 
@@ -82,8 +83,20 @@ function openOverlay(pokemon) {
     document.body.classList.add("scroll_none");
     let singlePokemonOverlay = document.getElementById('overlay');
     singlePokemonOverlay.classList.remove('d-none');
-    singlePokemonOverlay.innerHTML = "";
     singlePokemonOverlay.innerHTML = templatePokemonOverlay(pokemon);
+    currentPokemonIndex = pokemonUrls.findIndex(p => p.name === pokemon.name);
+    console.log(currentPokemonIndex);
+
+}
+
+// Overlay Navigation
+async function navigatePokemon(direction) {
+    currentPokemonIndex += direction;
+    if (currentPokemonIndex < 0) currentPokemonIndex = 0;
+    if (currentPokemonIndex >= pokemonUrls.length) currentPokemonIndex = pokemonUrls.length - 1;
+
+    const pokemon = await getPokemonData(pokemonUrls[currentPokemonIndex].url);
+    openOverlay(pokemon);
 }
 
 // Closes the Pokémon details overlay

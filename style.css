@@ -141,6 +141,7 @@ button:hover {
 #overlay{
   z-index: 3;
   margin: 0 auto;
+  padding: 32px;
   position: fixed;
   top: 0;
   height: 100vh;
@@ -209,6 +210,20 @@ button:hover {
   height: 80%;
   width: 100%;
 }
+
+.nav-button-mobile, .nav-button-desktop {
+  font-size: 50px;
+  cursor: pointer;
+}
+
+.nav-button-desktop {
+  display: block;
+}
+
+.overlay-navigation{
+  display: none;
+}
+
 
 @media (max-width: 850px){
  header input {

@@ -15,6 +15,7 @@ function templatePokemonCard(pokemon) {
 
 function templatePokemonOverlay(pokemon) {
     return `
+        <div class="nav-button-desktop" onclick="navigatePokemon(-1)"><-</div>
         <div class="pokemon-overlay-card d-flex-fd-c ${pokemon.types[0].type.name}">
             <div class="pokemon-title w100 d-flex-sb">
                 <p class="fs-b"># ${pokemon.id}</p>
@@ -29,22 +30,18 @@ function templatePokemonOverlay(pokemon) {
                 </div>
                 <div class="pokemon-overlay-description-content" id="pokemon-description-content">
                     <table>
-                        <tr>
-                            <td>Name: </td>
-                            <td>${capitalizeFirstLetter(pokemon.name)}</td>
-                        </tr>
-                        <tr>
-                            <td>Height: </td>
-                            <td>${calculateHeightWeight(pokemon.height)}m</td>
-                        </tr>
-                        <tr>
-                            <td>Weight: </td>
-                            <td>${calculateHeightWeight(pokemon.weight)}kg</td>
-                        </tr>
+                        <tr><td>Name:</td><td>${capitalizeFirstLetter(pokemon.name)}</td></tr>
+                        <tr><td>Height:</td><td>${calculateHeightWeight(pokemon.height)}m</td></tr>
+                        <tr><td>Weight:</td><td>${calculateHeightWeight(pokemon.weight)}kg</td></tr>
                     </table>
                 </div>
             </div>
         </div>
+        <div class="overlay-navigation">
+            <div class="nav-button-mobile" onclick="navigatePokemon(-1)"><-</div>
+            <div class="nav-button-mobile" onclick="navigatePokemon(1)">-></div>
+        </div>
+        <div class="nav-button-desktop" onclick="navigatePokemon(1)">-></div>
     `;
 }
 
