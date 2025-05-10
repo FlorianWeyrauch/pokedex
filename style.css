@@ -48,16 +48,14 @@ button {
   border: none;
   background-color: var(--primary-color);
   color: var(--text-color);
-  box-shadow: 0 0 0 2px white; /* ← weiße, scharfe Umrandung */
+  box-shadow: 0 0 0 2px white;
   transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 button:hover {
   background-color: #e01920e1;
-  box-shadow: 0 0 8px 2px white; /* ← Glow-Effekt beim Hover */
+  box-shadow: 0 0 8px 2px white;
 }
-
-
 
 .load-btn {
   margin-top: 40px;
@@ -198,7 +196,8 @@ button:hover {
   background-color: var(--bg-color);
   color: var(--text-color);
   border-radius: 12px 12px 0px 0px;
-  padding: 8px 0 8px 0;
+  height: 32px;
+  width: 100%;
 }
 
 .pokemon-overlay-description p:hover {
@@ -206,9 +205,16 @@ button:hover {
   transition: ease-in-out 200ms;
 }
 
-.pokemon-overlay-description-content {
-  height: 80%;
-  width: 100%;
+.overlay-description-content-about {
+  height: 100%;
+  border-radius: 12px 0px 0px 0px;
+  background-color: var(--primary-color);
+}
+
+.overlay-description-content-stats {
+  height: 100%;
+  border-radius: 0px 12px 0px 0px;
+  background-color: var(--primary-color);
 }
 
 .nav-button-mobile, .nav-button-desktop {
@@ -227,18 +233,54 @@ button:hover {
 }
 
 .nav-button-desktop:hover{
-  scale: 1.02;
+  scale: 1.08;
+}
+
+.nav-button-desktop:active{
+  scale: 1;
   background-color: rgba(255, 255, 255, 0.15);
-  transition: ease-in-out 150ms;
+  transition: ease-in-out 100ms;
 }
 
 .overlay-navigation{
   display: none;
 }
 
+/* overlay-content */
+.pokemon-overlay-content {
+  gap: 2px;
+  height: 85%;
+  width: 100%;
+}
+table {
+  width: 100%;
+}
+
+.td-left {
+  font-weight: 700;
+  width: 30%;
+  text-align: center;
+}
+
+.td-m {
+  text-align: right;
+  width: 5%;
+  font-weight: bold;
+}
+
+
+/* base stats */
+.stats-range {
+  background-color: blue;
+  height: 15px;
+  padding: 8px;
+  border-radius: 6px;
+  color: white;
+  max-width: 100%;
+}
 
 @media (max-width: 850px){
- header input {
+ header img {
     display: none;
   }
 }

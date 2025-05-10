@@ -18,9 +18,15 @@ p {
   max-width: 1440px;
 }
 
+.w50 {
+  width: 50%;
+}
+
 .w100{
   width: 100%;
 }
+
+
 
 .d-none {
   display: none !important; 
@@ -61,6 +67,11 @@ p {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+.d-flex-fe{
+  display: flex;
+  justify-content: flex-end;
 }
 
 .d-flex-wrap {

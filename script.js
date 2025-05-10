@@ -80,10 +80,13 @@ function showPokemonType(pokemon) {
 
 // Opens an overlay with detailed information about the selected Pokémon
 function openOverlay(pokemon) {
+    toggleLoadingSpinner();
     document.body.classList.add('scroll_none');
     let singlePokemonOverlay = document.getElementById('overlay');
     singlePokemonOverlay.classList.remove('d-none');
     singlePokemonOverlay.innerHTML = templatePokemonOverlay(pokemon);
+    showPokemonBaseStats(pokemon);
+    toggleLoadingSpinner();
     currentPokemonIndex = pokemonUrls.findIndex(p => p.name === pokemon.name);
     console.log(currentPokemonIndex);
 
@@ -103,7 +106,7 @@ async function navigatePokemon(direction) {
 }
 
 // Closes the Pokémon details overlay
-// Check 
+// Check id 
 function closeOverlay(event, index) {
     if (event.target.id === 'overlay') {
         let singlePokemonOverlay = document.getElementById('overlay');
@@ -122,4 +125,14 @@ function showPokemonAbout(pokemon) {
     let pokemonDescription = document.getElementById('pokemon-description-content');
     pokemonDescription.innerHTML = "";
     pokemonDescription.innerHTML = templateAboutPokemon(pokemon);
+}
+
+function showPokemonBaseStats(pokemon) {
+    showStatsBg();
+    let content = document.getElementById('pokemon-description-content');
+    content.innerHTML = "";
+    let baseStatsData = pokemon.stats
+    for (let i = 0; i < baseStatsData.length; i++) {
+        content.innerHTML += templateBaseStats(baseStatsData[i])
+    }
 }

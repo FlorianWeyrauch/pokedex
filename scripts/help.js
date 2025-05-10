@@ -15,3 +15,17 @@ function calculateHeightWeight(n) {
 function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+function showAboutBg() {
+    let about = document.getElementById('about');
+    let stats = document.getElementById('stats');
+    about.classList.add('overlay-description-content-about');
+    stats.classList.remove('overlay-description-content-stats')
+}
+
+function showStatsBg() {
+    let about = document.getElementById('about');
+    let stats = document.getElementById('stats');
+    stats.classList.add('overlay-description-content-stats');
+    about.classList.remove('overlay-description-content-about')
+}
