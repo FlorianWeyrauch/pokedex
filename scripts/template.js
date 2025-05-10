@@ -15,7 +15,7 @@ function templatePokemonCard(pokemon) {
 
 function templatePokemonOverlay(pokemon) {
     return `
-        <div class="nav-button-desktop" onclick="navigatePokemon(-1)"><-</div>
+        <div class="nav-button-desktop d-flex-c" onclick="navigatePokemon(-1)">&#9664;</div>
         <div class="pokemon-overlay-card d-flex-fd-c ${pokemon.types[0].type.name}">
             <div class="pokemon-title w100 d-flex-sb">
                 <p class="fs-b"># ${pokemon.id}</p>
@@ -38,10 +38,10 @@ function templatePokemonOverlay(pokemon) {
             </div>
         </div>
         <div class="overlay-navigation">
-            <div class="nav-button-mobile" onclick="navigatePokemon(-1)"><-</div>
-            <div class="nav-button-mobile" onclick="navigatePokemon(1)">-></div>
+            <div class="nav-button-mobile d-flex-c" onclick="navigatePokemon(-1)">&#9664;</div>
+            <div class="nav-button-mobile d-flex-c" onclick="navigatePokemon(1)">&#9654;</div>
         </div>
-        <div class="nav-button-desktop" onclick="navigatePokemon(1)">-></div>
+        <div class="nav-button-desktop d-flex-c" onclick="navigatePokemon(1)">&#9654;</div>
     `;
 }
 

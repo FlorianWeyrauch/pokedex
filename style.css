@@ -218,6 +218,16 @@ button:hover {
 
 .nav-button-desktop {
   display: block;
+  font-size: 36px;
+  padding: 9 20px 0 20px;
+  border-radius: 8px;
+  height: 80px;
+  width: 50px;
+}
+
+.nav-button-desktop:hover{
+  background-color: rgba(255, 255, 255, 0.15);
+  transition: ease-in-out 150ms;
 }
 
 .overlay-navigation{

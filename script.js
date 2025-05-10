@@ -92,9 +92,12 @@ function openOverlay(pokemon) {
 // Overlay Navigation
 async function navigatePokemon(direction) {
     currentPokemonIndex += direction;
-    if (currentPokemonIndex < 0) currentPokemonIndex = 0;
-    if (currentPokemonIndex >= pokemonUrls.length) currentPokemonIndex = pokemonUrls.length - 1;
-
+    if (currentPokemonIndex < 0) {
+        currentPokemonIndex = 0;
+    }
+    if (currentPokemonIndex >= pokemonUrls.length) {
+        currentPokemonIndex = pokemonUrls.length - 1;
+    }
     const pokemon = await getPokemonData(pokemonUrls[currentPokemonIndex].url);
     openOverlay(pokemon);
 }
@@ -106,7 +109,7 @@ function closeOverlay() {
     document.body.classList.remove("scroll_none");
 }
 
-// Displays the "About" section of the selected Pokémon in the overlay
+// Displays the about section of the selected Pokémon in the overlay
 function showPokemonAbout(pokemon) {
     let pokemonDescription = document.getElementById('pokemon-description-content');
     pokemonDescription.innerHTML = "";
