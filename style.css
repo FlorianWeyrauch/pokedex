@@ -218,6 +218,7 @@ button:hover {
 
 .nav-button-desktop {
   display: block;
+  background-color: rgba(255, 255, 255, 0.1);
   font-size: 36px;
   padding: 9 20px 0 20px;
   border-radius: 8px;
@@ -226,6 +227,7 @@ button:hover {
 }
 
 .nav-button-desktop:hover{
+  scale: 1.02;
   background-color: rgba(255, 255, 255, 0.15);
   transition: ease-in-out 150ms;
 }

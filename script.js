@@ -42,7 +42,7 @@ async function loadCurrentPokemon(startIndex, endIndex) {
 
 // Handles loading and displaying the next set of Pokémon cards
 async function loadPokemon() {
-    let listContainer = document.getElementById("content");
+    let listContainer = document.getElementById('content');
     toggleLoadingSpinner();
     try {
         const newData = await loadCurrentPokemon(offset, offset + limit);
@@ -57,7 +57,7 @@ async function loadPokemon() {
 
 // Displays a list of Pokémon cards on the page
 function showPokemon(pokemonData) {
-    let listContainer = document.getElementById("content");
+    let listContainer = document.getElementById('content');
     for (let i = 0; i < pokemonData.length; i++) {
         const pokemon = pokemonData[i];
         const mainType = pokemon.types[0].type.name;
@@ -72,7 +72,7 @@ function showPokemon(pokemonData) {
 
 // Displays the type(s) of a given Pokémon in its card
 function showPokemonType(pokemon) {
-    let typeContent = document.getElementById("card_type_" + pokemon.id);
+    let typeContent = document.getElementById('card_type_' + pokemon.id);
     pokemon.types.forEach(element => {
         typeContent.innerHTML += `<span class="pokemon-type ${element.type.name}">${capitalizeFirstLetter(element.type.name)}</span> `;
     });
@@ -80,7 +80,7 @@ function showPokemonType(pokemon) {
 
 // Opens an overlay with detailed information about the selected Pokémon
 function openOverlay(pokemon) {
-    document.body.classList.add("scroll_none");
+    document.body.classList.add('scroll_none');
     let singlePokemonOverlay = document.getElementById('overlay');
     singlePokemonOverlay.classList.remove('d-none');
     singlePokemonOverlay.innerHTML = templatePokemonOverlay(pokemon);
@@ -103,10 +103,18 @@ async function navigatePokemon(direction) {
 }
 
 // Closes the Pokémon details overlay
-function closeOverlay() {
-    let singlePokemonOverlay = document.getElementById('overlay');
-    singlePokemonOverlay.classList.add('d-none');
-    document.body.classList.remove("scroll_none");
+// Check 
+function closeOverlay(event, index) {
+    if (event.target.id === 'overlay') {
+        let singlePokemonOverlay = document.getElementById('overlay');
+        singlePokemonOverlay.classList.add('d-none');
+        document.body.classList.remove("scroll_none");
+    }
+    if (event.target.id === ('overlay_close_btn_' + index)) {
+        let singlePokemonOverlay = document.getElementById('overlay');
+        singlePokemonOverlay.classList.add('d-none');
+        document.body.classList.remove("scroll_none");
+    }
 }
 
 // Displays the about section of the selected Pokémon in the overlay

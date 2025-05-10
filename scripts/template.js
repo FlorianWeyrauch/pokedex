@@ -19,14 +19,13 @@ function templatePokemonOverlay(pokemon) {
         <div class="pokemon-overlay-card d-flex-fd-c ${pokemon.types[0].type.name}">
             <div class="pokemon-title w100 d-flex-sb">
                 <p class="fs-b"># ${pokemon.id}</p>
-                <span class="overlay-close-btn" onclick="closeOverlay()">X</span>
+                <span id="overlay_close_btn_${pokemon.id}" class="overlay-close-btn" onclick="closeOverlay(event, ${pokemon.id})">X</span>
             </div>
             <img src="${pokemon.sprites.other.home.front_default}" alt="${pokemon.name}">
             <div class="pokemon-overlay-data">
                 <div class="w100 d-flex-sa pokemon-overlay-description">
-                    <p onclick="">About</p>
-                    <p>Base Stats</p>
-                    <p>Evolution</p>
+                    <div>About</div>
+                    <div>Base Stats</div>
                 </div>
                 <div class="pokemon-overlay-description-content" id="pokemon-description-content">
                     <table>
