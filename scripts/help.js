@@ -1,3 +1,4 @@
+//returns the first letter in capitals
 function capitalizeFirstLetter(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
@@ -6,6 +7,12 @@ function toggleLoadingSpinner() {
     let load = document.getElementById("loading_spinner");
     load.classList.toggle('d-none');
     document.body.classList.toggle("scroll_none");
+}
+
+//removes the button when searching for pokemon and shows it again when the normal list is loaded
+function toggleLoadBtn() {
+    const loadBtn = document.getElementById("load_btn");
+    loadBtn.classList.toggle("d-none");
 }
 
 function calculateHeightWeight(n) {
@@ -31,7 +38,4 @@ function showStatsBg() {
     about.classList.remove('overlay-description-content-about')
 }
 
-function toogleLoadBtn() {
-    const loadBtn = document.getElementById("load_btn");
-    loadBtn.classList.toggle("d-none");
-}
+

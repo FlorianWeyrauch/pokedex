@@ -70,7 +70,7 @@ function showPokemon(pokemonData) {
 function showPokemonType(pokemon) {
     let typeContent = document.getElementById('card_type_' + pokemon.id);
     pokemon.types.forEach(element => {
-        typeContent.innerHTML += `<span class="pokemon-type ${element.type.name}">${capitalizeFirstLetter(element.type.name)}</span> `;
+        typeContent.innerHTML += templatePokemonType(element);
     });
 }
 
@@ -130,7 +130,7 @@ async function searchPokemon() {
         content.innerHTML = "";
         offset = 0;
         await loadPokemon();
-        toogleLoadBtn();
+        toggleLoadBtn();
         return;
     }
     if (inputData.length <= 3) {
@@ -144,7 +144,7 @@ async function searchPokemon() {
     for (let i = 0; i < filteredPokemon.length; i++) {
         const pokemon = filteredPokemon[i];
         try {
-            toogleLoadBtn();
+            toggleLoadBtn();
             const data = await getPokemonData(pokemon.url);
             const card = createPokemonCard(data);
             content.appendChild(card);

@@ -39,6 +39,10 @@ function templatePokemonOverlay(pokemon) {
     `;
 }
 
+function templatePokemonType(pokemon) {
+    return `<span class="pokemon-type ${pokemon.type.name}">${capitalizeFirstLetter(pokemon.type.name)}</span> `;
+}
+
 function templateAboutPokemon(pokemon) {
     return `
             <table id="about_table">
