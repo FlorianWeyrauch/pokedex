@@ -30,3 +30,8 @@ function showStatsBg() {
     stats.classList.add('overlay-description-content-stats');
     about.classList.remove('overlay-description-content-about')
 }
+
+function toogleLoadBtn() {
+    const loadBtn = document.getElementById("load_btn");
+    loadBtn.classList.toggle("d-none");
+}

@@ -13,11 +13,6 @@
     <link rel="stylesheet" href="./style/standard.css" />
     <link rel="stylesheet" href="./style/color.css" />
     <link rel="stylesheet" href="./assets/raleway/raleway.css">
-
-    <!-- JS -->
-    <script src="./script.js"></script>
-    <script src="./scripts/template.js"></script>
-    <script src="./scripts/help.js"></script>
   </head>
   <body onload="init()">
     <!-- Header -->
@@ -32,7 +27,7 @@
       <section class="d-flex-wrap d-flex-c" id="content">
       </section>
       <div class="d-flex-c">
-        <button class="load-btn" onclick="loadPokemon()"><b>Load more</b></button>
+        <button id="load_btn" class="load-btn d-none" onclick="loadPokemon()"><b>Load more</b></button>
       </div>
     </main>
 
@@ -49,6 +44,11 @@
       <span>&copy; 2025 Florian Weyrauch. Alle Rechte vorbehalten.
       </span>
     </footer>
+
+        <!-- JS -->
+    <script src="./script.js"></script>
+    <script src="./scripts/template.js"></script>
+    <script src="./scripts/help.js"></script>
   </body>
 </html>
 
