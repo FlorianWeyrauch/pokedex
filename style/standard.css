@@ -32,6 +32,10 @@ p {
   display: none !important; 
 }
 
+.d-block{
+  display: block;
+}
+
 .d-flex-c{
   display: flex;
   justify-content: center;

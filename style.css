@@ -225,15 +225,16 @@ button:hover {
 .nav-button-desktop {
   display: block;
   background-color: rgba(255, 255, 255, 0.1);
-  font-size: 36px;
+  font-size: 48px;
   padding: 9 20px 0 20px;
   border-radius: 8px;
-  height: 80px;
-  width: 50px;
+  height: 120px;
+  width: 70px;
 }
 
 .nav-button-desktop:hover{
   scale: 1.08;
+  transition: ease-in-out 100ms;
 }
 
 .nav-button-desktop:active{
@@ -248,13 +249,16 @@ button:hover {
 
 /* overlay-content */
 .pokemon-overlay-content {
-  gap: 2px;
+  padding: 8px;
+  gap: 4px;
   height: 85%;
   width: 100%;
 }
 table {
   width: 100%;
 }
+
+
 
 .td-left {
   font-weight: 700;
@@ -273,7 +277,7 @@ table {
 .stats-range {
   background-color: blue;
   height: 15px;
-  padding: 8px;
+  padding: 8px 0 8px 0;
   border-radius: 6px;
   color: white;
   max-width: 100%;

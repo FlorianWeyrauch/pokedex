@@ -17,10 +17,11 @@ function scrollToTop() {
 }
 
 function showAboutBg() {
-    let about = document.getElementById('about');
     let stats = document.getElementById('stats');
+    let about = document.getElementById('about');
     about.classList.add('overlay-description-content-about');
-    stats.classList.remove('overlay-description-content-stats')
+    about.classList.remove('d-none');
+    stats.classList.remove('overlay-description-content-stats');
 }
 
 function showStatsBg() {
