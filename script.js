@@ -127,36 +127,60 @@ function showPokemonBaseStats(pokemon) {
 }
 
 async function searchPokemon() {
-    const inputData = getInput();
-    if (inputData === "") {
-        content.innerHTML = "";
-        offset = 0;
-        await loadPokemon();
-        showLoadBtn();
+    const inputData = getInput().toLowerCase();
+
+    if (shouldResetSearch(inputData)) {
+        await resetSearch();
         return;
     }
-    if (inputData.length <= 2) {
-        return;
-    }
-    const filteredPokemon = pokemonUrls.filter(pokemon =>
-        pokemon.name.toLowerCase().startsWith(inputData)
-    );
+
+    if (inputData.length <= 2) return;
+
+    const filtered = filterPokemon(inputData);
+    await displayFilteredPokemon(filtered);
+}
+
+function shouldResetSearch(input) {
+    return input === "";
+}
+
+async function resetSearch() {
     content.innerHTML = "";
+    offset = 0;
+    await loadPokemon();
+    showLoadBtn();
+}
+
+function filterPokemon(query) {
+    return pokemonUrls.filter(p =>
+        p.name.toLowerCase().startsWith(query)
+    );
+}
+
+async function displayFilteredPokemon(filtered) {
+    content.innerHTML = "";
+    removeLoadBtn();
     toggleLoadingSpinner();
-    for (let i = 0; i < filteredPokemon.length; i++) {
-        const pokemon = filteredPokemon[i];
-        try {
-            removeLoadBtn();
-            const data = await getPokemonData(pokemon.url);
-            const card = createPokemonCard(data);
-            content.appendChild(card);
-            showPokemonType(data);
-        } catch (error) {
-            console.error("Fehler beim Laden eines Pokémon:", error);
-        }
+
+    for (let i = 0; i < filtered.length; i++) {
+        await renderPokemonCard(filtered[i].url);
     }
+
     toggleLoadingSpinner();
 }
+
+//create the pokemon card for pokemon search content
+async function renderPokemonCard(url) {
+    try {
+        const data = await getPokemonData(url);
+        const card = createPokemonCard(data);
+        content.appendChild(card);
+        showPokemonType(data);
+    } catch (err) {
+        console.error("Fehler beim Laden eines Pokémon:", err);
+    }
+}
+
 
 
 // gets the name of the entered pokemon
