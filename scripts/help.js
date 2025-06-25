@@ -21,8 +21,9 @@ function showLoadBtn() {
 }
 
 function calculateHeightWeight(n) {
-    return n / 10;
+    return (n / 10).toString().replace('.', ',');
 }
+
 
 function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -41,6 +42,11 @@ function showStatsBg() {
     let stats = document.getElementById('stats');
     stats.classList.add('overlay-description-content-stats');
     about.classList.remove('overlay-description-content-about')
+}
+
+function playPokemonAudio(audioUrl) {
+    const audio = new Audio(audioUrl);
+    audio.play();
 }
 
 

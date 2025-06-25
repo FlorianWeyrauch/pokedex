@@ -44,20 +44,40 @@ function templatePokemonType(pokemon) {
     return `<span class="pokemon-type ${pokemon.type.name}">${capitalizeFirstLetter(pokemon.type.name)}</span> `;
 }
 
+function templatePokemonOverlayType(pokemon) {
+    return `<span>${capitalizeFirstLetter(pokemon.type.name)}</span> `;
+}
+
+function templatePokemonOverlayAbility(pokemon) {
+    return `<span>${capitalizeFirstLetter(pokemon)}</span> `;
+}
+
 function templateAboutPokemon(pokemon) {
+    let sound = pokemon.cries.latest
     return `
             <table id="about_table">
                 <tr>
-                    <td>Height: </td>
-                    <td>${pokemon.height}</td>
+                    <td class="td-about-pokemon">Type: </td>
+                    <td id="overlay_typ_${pokemon.id}"></td>
                 </tr>
                 <tr>
-                    <td>Weight: </td>
-                    <td>${pokemon.weight}</td>
+                    <td class="td-about-pokemon">Height: </td>
+                    <td>${calculateHeightWeight(pokemon.height)} m</td>
+                </tr>
+                <tr>
+                    <td class="td-about-pokemon">Weight: </td>
+                    <td>${calculateHeightWeight(pokemon.weight)} kg</td>
+                </tr>
+                <tr>
+                    <td class="td-about-pokemon">Ability: </td>
+                    <td id="overlay_ability_${pokemon.id}"></td>
                 </tr>
             </table>
+            <button class="sound-btn" onclick="playPokemonAudio('${sound}')">Play sound</button>
     `;
 }
+
+
 
 function templateBaseStats(pokemon) {
     return `

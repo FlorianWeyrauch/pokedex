@@ -208,6 +208,14 @@ button:hover {
   transition: ease-in-out 200ms;
 }
 
+#about, #stats {
+  cursor: pointer;
+}
+
+#about:hover {
+  background-color: green;
+}
+
 .overlay-description-content-about {
   height: 100%;
   border-radius: 12px 0px 0px 0px;
@@ -259,9 +267,8 @@ button:hover {
 }
 table {
   width: 100%;
+  font-size: 18px;
 }
-
-
 
 .td-left {
   font-weight: 700;
@@ -284,5 +291,15 @@ table {
   border-radius: 6px;
   color: white;
   max-width: 100%;
+}
+
+
+/* about stats */
+.td-about-pokemon {
+  width: 30%;
+}
+
+.sound-btn {
+  margin-top: 20px;
 }
 

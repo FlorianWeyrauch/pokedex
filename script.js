@@ -83,6 +83,14 @@ function openOverlay(pokemon) {
     currentPokemonIndex = pokemonUrls.findIndex(p => p.name === pokemon.name);
 }
 
+function openOverlayAbout(pokemon) {
+    document.body.classList.add('scroll_none');
+    overlay.classList.remove('d-none');
+    overlay.innerHTML = templatePokemonOverlay(pokemon);
+    showPokemonAbout(pokemon);
+    currentPokemonIndex = pokemonUrls.findIndex(p => p.name === pokemon.name);
+}
+
 // Overlay Navigation
 // 
 async function navigatePokemon(direction) {
@@ -94,7 +102,7 @@ async function navigatePokemon(direction) {
         currentPokemonIndex = pokemonUrls.length - 1;
     }
     const pokemon = await getPokemonData(pokemonUrls[currentPokemonIndex].url);
-    openOverlay(pokemon);
+    openOverlayAbout(pokemon);
 }
 
 // Closes the Pokémon details overlay
@@ -114,6 +122,30 @@ function closeOverlay(event, index) {
 function showPokemonAbout(pokemon) {
     let pokemonDescription = document.getElementById('pokemon-description-content');
     pokemonDescription.innerHTML = templateAboutPokemon(pokemon);
+    pokemonAboutType(pokemon);
+    pokemonAboutAbility(pokemon);
+}
+
+function pokemonAboutType(pokemon) {
+    let overlayType = document.getElementById("overlay_typ_" + pokemon.id)
+    for (let i = 0; i < pokemon.types.length; i++) {
+        let element = pokemon.types[i];
+        overlayType.innerHTML += templatePokemonOverlayType(element);
+        if (i < pokemon.types.length - 1) {
+            overlayType.innerHTML += ", ";
+        }
+    }
+}
+
+function pokemonAboutAbility(pokemon) {
+    let overlayAbility = document.getElementById("overlay_ability_" + pokemon.id)
+    for (let i = 0; i < pokemon.abilities.length; i++) {
+        let element = pokemon.abilities[i].ability.name;
+        overlayAbility.innerHTML += templatePokemonOverlayAbility(element);
+        if (i < pokemon.abilities.length - 1) {
+            overlayAbility.innerHTML += ", ";
+        }
+    }
 }
 
 
@@ -177,7 +209,7 @@ async function renderPokemonCard(url) {
         content.appendChild(card);
         showPokemonType(data);
     } catch (err) {
-        console.error("Fehler beim Laden eines Pokémon:", err);
+        console.error(err);
     }
 }
 
@@ -194,7 +226,7 @@ function createPokemonCard(data) {
     const card = document.createElement("div");
     const mainType = data.types[0].type.name;
     card.className = `pokemon-card ${mainType}`;
-    card.onclick = () => openOverlay(data);
+    card.onclick = () => openOverlayAbout(data);
     card.innerHTML = templatePokemonCard(data);
     return card;
 }
