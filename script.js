@@ -4,7 +4,7 @@ let offset = 0;
 const limit = 20;
 
 
-//global attributes
+//Gloabale Attribute
 const content = document.getElementById("content");
 const overlay = document.getElementById('overlay');
 
@@ -116,6 +116,8 @@ function showPokemonAbout(pokemon) {
     pokemonDescription.innerHTML = templateAboutPokemon(pokemon);
 }
 
+
+//Is executed in the openOverlay function
 function showPokemonBaseStats(pokemon) {
     let descriptionContent = document.getElementById('pokemon-description-content');
     let baseStatsData = pokemon.stats;
@@ -130,10 +132,10 @@ async function searchPokemon() {
         content.innerHTML = "";
         offset = 0;
         await loadPokemon();
-        toggleLoadBtn();
+        showLoadBtn();
         return;
     }
-    if (inputData.length <= 3) {
+    if (inputData.length <= 2) {
         return;
     }
     const filteredPokemon = pokemonUrls.filter(pokemon =>
@@ -144,7 +146,7 @@ async function searchPokemon() {
     for (let i = 0; i < filteredPokemon.length; i++) {
         const pokemon = filteredPokemon[i];
         try {
-            toggleLoadBtn();
+            removeLoadBtn();
             const data = await getPokemonData(pokemon.url);
             const card = createPokemonCard(data);
             content.appendChild(card);

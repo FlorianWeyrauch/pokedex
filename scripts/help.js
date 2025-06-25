@@ -10,9 +10,14 @@ function toggleLoadingSpinner() {
 }
 
 //removes the button when searching for pokemon and shows it again when the normal list is loaded
-function toggleLoadBtn() {
+function removeLoadBtn() {
     const loadBtn = document.getElementById("load_btn");
-    loadBtn.classList.toggle("d-none");
+    loadBtn.classList.add("d-none");
+}
+
+function showLoadBtn() {
+    const loadBtn = document.getElementById("load_btn");
+    loadBtn.classList.remove("d-none");
 }
 
 function calculateHeightWeight(n) {

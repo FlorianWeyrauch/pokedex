@@ -13,12 +13,14 @@
     <link rel="stylesheet" href="./style/standard.css" />
     <link rel="stylesheet" href="./style/color.css" />
     <link rel="stylesheet" href="./assets/raleway/raleway.css">
+    <link rel="stylesheet" href="./style/responsive.css">
   </head>
   <body onload="init()">
     <!-- Header -->
-    <header class="d-flex-sb">
+    <header>
       <a class="d-flex-c" onclick="scrollToTop()">
-        <img src="./assets/img/Pokemon-font.png" alt="Pokemon">
+        <img class="header-desktop-img" src="./assets/img/Pokemon-font.png" alt="Pokemon">
+        <img class="header-mobile-img" src="./assets/img/pokeball-1594373_1280.png" alt="Pokemon">
       </a>
       <input oninput="searchPokemon()" id="search_input" type="text" placeholder="Search...">
     </header>
@@ -27,7 +29,7 @@
       <section class="d-flex-wrap d-flex-c" id="content">
       </section>
       <div class="d-flex-c">
-        <button id="load_btn" class="load-btn d-none" onclick="loadPokemon()"><b>Load more</b></button>
+        <button id="load_btn" class="load-btn" onclick="loadPokemon()"><b>Load more</b></button>
       </div>
     </main>
 
@@ -41,7 +43,7 @@
     
     <!-- Footer -->
     <footer class="d-flex-c">
-      <span>&copy; 2025 Florian Weyrauch. Alle Rechte vorbehalten.
+      <span>&copy; 2025 Florian Weyrauch
       </span>
     </footer>
 

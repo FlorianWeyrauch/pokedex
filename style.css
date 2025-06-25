@@ -21,10 +21,13 @@ header {
     position: sticky;
     top: 0;
     z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 } 
 
-header img {
-  height: 80px;
+.header-desktop-img, .header-mobile-img {
+  height: 72px;
 }
 
 footer {
@@ -283,8 +286,3 @@ table {
   max-width: 100%;
 }
 
-@media (max-width: 850px){
- header img {
-    display: none;
-  }
-}

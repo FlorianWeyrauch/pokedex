@@ -1,0 +1,40 @@
+@media (max-width: 1250px){
+    main {
+        padding: 50px;
+    }
+
+    header, footer {
+        padding: 0 50px;
+    }
+}
+
+@media (max-width: 850px){
+ .header-desktop-img {
+    display: none;
+  }
+   .header-mobile-img {
+    display: block;
+  }
+}
+
+@media (min-width: 850px){
+ .header-desktop-img {
+    display: block;
+  }
+  
+   .header-mobile-img {
+    display: none;
+  }
+}
+
+@media (max-width: 630px){
+    header {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 500px){
+   .header-mobile-img {
+    display: none;
+  }
+}
