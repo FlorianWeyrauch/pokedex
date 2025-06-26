@@ -88,6 +88,7 @@ function openOverlayAbout(pokemon) {
     overlay.classList.remove('d-none');
     overlay.innerHTML = templatePokemonOverlay(pokemon);
     showPokemonAbout(pokemon);
+    showAboutBg();
     currentPokemonIndex = pokemonUrls.findIndex(p => p.name === pokemon.name);
 }
 
@@ -212,8 +213,6 @@ async function renderPokemonCard(url) {
         console.error(err);
     }
 }
-
-
 
 // gets the name of the entered pokemon
 function getInput() {

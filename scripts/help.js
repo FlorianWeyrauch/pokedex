@@ -32,9 +32,8 @@ function scrollToTop() {
 function showAboutBg() {
     let stats = document.getElementById('stats');
     let about = document.getElementById('about');
-    about.classList.add('overlay-description-content-about');
-    about.classList.remove('d-none');
-    stats.classList.remove('overlay-description-content-stats');
+    about.classList.add('primary-bg-color');
+    stats.classList.remove('primary-bg-color');
 }
 
 function showStatsBg() {

@@ -203,6 +203,11 @@ button:hover {
   width: 100%;
 }
 
+.primary-bg-color {
+  background-color: var(--primary-color);
+  text-decoration: underline;
+}
+
 .pokemon-overlay-description p:hover {
   color: var(--accent-color);
   transition: ease-in-out 200ms;
@@ -210,10 +215,21 @@ button:hover {
 
 #about, #stats {
   cursor: pointer;
+  height: 32px;
 }
 
-#about:hover {
-  background-color: green;
+#about {
+  border-top-left-radius: 12px;
+}
+
+#stats {
+  border-top-right-radius: 12px;
+}
+
+#about:hover,
+#stats:hover {
+  text-decoration: underline;
+  transition: ease-in-out 200ms;
 }
 
 .overlay-description-content-about {
@@ -233,7 +249,7 @@ button:hover {
   cursor: pointer;
 }
 
-.nav-button-desktop {
+.nav-button-desktop, .nav-button-mobile {
   display: block;
   background-color: rgba(255, 255, 255, 0.1);
   font-size: 48px;
@@ -254,8 +270,9 @@ button:hover {
   transition: ease-in-out 100ms;
 }
 
-.overlay-navigation{
-  display: none;
+.overlay-navigation {
+  display: flex;
+  justify-content: space-between;
 }
 
 /* overlay-content */
@@ -301,5 +318,14 @@ table {
 
 .sound-btn {
   margin-top: 20px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.sound-btn:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.sound-btn:active {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 

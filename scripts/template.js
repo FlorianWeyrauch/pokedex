@@ -32,7 +32,7 @@ function templatePokemonOverlay(pokemon) {
                 </div>
             </div>
         </div>
-        <div class="overlay-navigation">
+        <div class="overlay-navigation w100">
             <div class="nav-button-mobile d-flex-c" onclick="navigatePokemon(-1)">&#9664;</div>
             <div class="nav-button-mobile d-flex-c" onclick="navigatePokemon(1)">&#9654;</div>
         </div>
