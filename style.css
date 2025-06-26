@@ -36,8 +36,6 @@ footer {
   margin-top: auto;
 }
 
-
-
 section {
     gap: 40px;
 }
@@ -94,8 +92,6 @@ button:hover {
 .loading-spinner-description {
   font-size: 30px;
 }
-
-
 
 /* Pokemon Card */
 .pokemon-card {
@@ -259,6 +255,10 @@ button:hover {
   width: 70px;
 }
 
+.nav-button-mobile {
+  margin: 0 20px 0 20px;
+}
+
 .nav-button-desktop:hover{
   scale: 1.08;
   transition: ease-in-out 100ms;
@@ -309,7 +309,6 @@ table {
   color: white;
   max-width: 100%;
 }
-
 
 /* about stats */
 .td-about-pokemon {

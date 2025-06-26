@@ -49,12 +49,37 @@
     }
 }
 
+@media (max-width: 550px){
+    .pokemon-overlay-card {
+      width: 100%;
+    }
+
+    #overlay {
+      padding: 12px;
+    }
+}
+
 @media (max-width: 500px){
    .header-mobile-img {
     display: none;
   }
 
-      main {
+    main {
         padding: 50px 20px;
     }
+
+    header {
+      justify-content: center;
+    }
+}
+
+@media (max-width: 400px){
+    #overlay {
+      padding: 8px;
+    }
+
+    .pokemon-overlay-card img {
+      height: 270px;
+      width: 270px;
+    } 
 }

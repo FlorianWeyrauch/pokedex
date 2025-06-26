@@ -103,7 +103,9 @@ async function navigatePokemon(direction) {
         currentPokemonIndex = pokemonUrls.length - 1;
     }
     const pokemon = await getPokemonData(pokemonUrls[currentPokemonIndex].url);
+    toggleLoadingSpinner();
     openOverlayAbout(pokemon);
+    toggleLoadingSpinner();
 }
 
 // Closes the Pokémon details overlay
