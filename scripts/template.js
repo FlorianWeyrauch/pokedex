@@ -57,6 +57,10 @@ function templateAboutPokemon(pokemon) {
     return `
             <table id="about_table">
                 <tr>
+                    <td class="td-about-pokemon">Name: </td>
+                    <td>${capitalizeFirstLetter(pokemon.name)}</td>
+                </tr>
+                <tr>
                     <td class="td-about-pokemon">Type: </td>
                     <td id="overlay_typ_${pokemon.id}"></td>
                 </tr>
