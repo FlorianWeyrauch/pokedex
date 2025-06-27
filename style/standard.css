@@ -4,7 +4,6 @@
   scroll-behavior: smooth;
 }
 
-
 a {
   text-decoration: none;
   cursor: pointer;
@@ -25,8 +24,6 @@ p {
 .w100{
   width: 100%;
 }
-
-
 
 .d-none {
   display: none !important; 

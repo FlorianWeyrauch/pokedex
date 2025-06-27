@@ -201,7 +201,7 @@ button:hover {
 
 .primary-bg-color {
   background-color: var(--primary-color);
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 
 .pokemon-overlay-description p:hover {
@@ -224,7 +224,7 @@ button:hover {
 
 #about:hover,
 #stats:hover {
-  text-decoration: underline;
+  /* text-decoration: underline; */
   transition: ease-in-out 200ms;
 }
 
@@ -288,8 +288,8 @@ table {
 }
 
 .td-left {
-  font-weight: 700;
-  width: 30%;
+  font-weight: 600;
+  width: 40%;
   text-align: center;
 }
 
@@ -302,6 +302,7 @@ table {
 
 /* base stats */
 .stats-range {
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   background-color: blue;
   height: 15px;
   padding: 8px 0 8px 0;
@@ -311,12 +312,17 @@ table {
 }
 
 /* about stats */
+#about_table {
+  font-weight: 500;
+}
+
 .td-about-pokemon {
+    font-weight: 600;
   width: 30%;
 }
 
 .sound-btn {
-  margin-top: 20px;
+  margin-top: 10px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 

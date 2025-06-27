@@ -25,8 +25,8 @@ function templatePokemonOverlay(pokemon) {
             <img src="${pokemonImg}" alt="${pokemon.name}">
             <div class="pokemon-overlay-data">
                 <div class="w100 d-flex-sa pokemon-overlay-description">
-                    <div onclick="" class="w50 d-flex-c" id="about">About</div>
-                    <div onclick="" class="w50 d-flex-c" id="stats">Base Stats</div>
+                    <div onclick="openOverlayAboutById(${pokemon.id})" class="w50 d-flex-c" id="about">About</div>
+                    <div onclick="openOverlayBaseStatsById(${pokemon.id})" class="w50 d-flex-c" id="stats">Base Stats</div>
                 </div>
                 <div class="pokemon-overlay-content d-flex-c-fd-c" id="pokemon-description-content">
                 </div>
@@ -86,9 +86,8 @@ function templateAboutPokemon(pokemon) {
 function templateBaseStats(pokemon) {
     return `
         <table id="stats_table" class="overlay-base-stats">
-            <tr>
-                <td class="td-left">${capitalizeFirstLetter(pokemon.stat.name)}</td>
-                <td class="td-m">&#10147;</td>
+            <tr class="base-stats-tr">
+                <td class="td-left">${capitalizeFirstLetter(pokemon.stat.name)}: </td>
                 <td class="stats-range d-flex-c" style="width: ${pokemon.base_stat}%;">${pokemon.base_stat}</td>
             </tr>
         </table>

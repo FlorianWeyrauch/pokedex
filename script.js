@@ -3,30 +3,30 @@ let currentPokemonIndex = 0;
 let offset = 0;
 const limit = 20;
 
-
-//Gloabale Attribute
+// Global DOM elements
 const content = document.getElementById("content");
 const overlay = document.getElementById('overlay');
 
+// Initializes the app: loads all Pokémon URLs and loads the first batch
 async function init() {
     await getPokemonUrl();
     await loadPokemon();
 }
 
-// Fetches all Pokémon URLs from the API and stores them in a global list
+// Fetches all available Pokémon URLs from the API and stores them in a global list
 async function getPokemonUrl() {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0`);
     const data = await response.json();
     pokemonUrls = data.results;
 }
 
-// Fetches data from a single Pokémon URL
+// Fetches detailed data from a specific Pokémon URL
 async function getPokemonData(url) {
     const response = await fetch(url);
     return response.json();
 }
 
-// Loads a batch of Pokémon data (20 at a time) based on the current index range
+// Loads a batch of Pokémon data (default: 20) starting from a given index
 async function loadCurrentPokemon(startIndex, endIndex) {
     const datas = [];
     const slice = pokemonUrls.slice(startIndex, endIndex);
@@ -42,7 +42,7 @@ async function loadCurrentPokemon(startIndex, endIndex) {
     return datas;
 }
 
-// Handles loading and displaying the next set of Pokémon cards
+// Loads the next group of Pokémon and displays them
 async function loadPokemon() {
     toggleLoadingSpinner();
     try {
@@ -56,17 +56,17 @@ async function loadPokemon() {
     toggleLoadingSpinner();
 }
 
-// Displays a list of Pokémon cards on the page
+// Renders a list of Pokémon cards onto the page
 function showPokemon(pokemonData) {
     for (let i = 0; i < pokemonData.length; i++) {
         const pokemon = pokemonData[i];
-        const card = createPokemonCard(pokemon)
+        const card = createPokemonCard(pokemon);
         content.appendChild(card);
         showPokemonType(pokemon);
     };
 }
 
-// Displays the type(s) of a given Pokémon in its card
+// Displays the type(s) of a Pokémon inside its card
 function showPokemonType(pokemon) {
     let typeContent = document.getElementById('card_type_' + pokemon.id);
     pokemon.types.forEach(element => {
@@ -74,15 +74,30 @@ function showPokemonType(pokemon) {
     });
 }
 
-// Opens an overlay with detailed information about the selected Pokémon
-function openOverlay(pokemon) {
+
+// Opens the overlay and displays the "About" section for a Pokémon by its ID
+async function openOverlayAboutById(id) {
+    const pokemon = await getPokemonData(pokemonUrls.find(p => p.url.includes(`/${id}/`)).url);
+    openOverlayAbout(pokemon);
+}
+
+// Opens the overlay and displays the "Base Stats" section for a Pokémon by its ID
+async function openOverlayBaseStatsById(id) {
+    const pokemon = await getPokemonData(pokemonUrls.find(p => p.url.includes(`/${id}/`)).url);
+    openOverlayBaseStats(pokemon);
+}
+
+// Opens an overlay window with detailed Pokémon info (base stats view)
+function openOverlayBaseStats(pokemon) {
     document.body.classList.add('scroll_none');
     overlay.classList.remove('d-none');
     overlay.innerHTML = templatePokemonOverlay(pokemon);
     showPokemonBaseStats(pokemon);
+    showStatsBg();
     currentPokemonIndex = pokemonUrls.findIndex(p => p.name === pokemon.name);
 }
 
+// Opens an overlay window with detailed Pokémon info (about section view)
 function openOverlayAbout(pokemon) {
     document.body.classList.add('scroll_none');
     overlay.classList.remove('d-none');
@@ -92,24 +107,19 @@ function openOverlayAbout(pokemon) {
     currentPokemonIndex = pokemonUrls.findIndex(p => p.name === pokemon.name);
 }
 
-// Overlay Navigation
-// 
+// Navigates through Pokémon in the overlay (next or previous)
 async function navigatePokemon(direction) {
     currentPokemonIndex += direction;
-    if (currentPokemonIndex < 0) {
-        currentPokemonIndex = 0;
-    }
-    if (currentPokemonIndex >= pokemonUrls.length) {
-        currentPokemonIndex = pokemonUrls.length - 1;
-    }
+    if (currentPokemonIndex < 0) currentPokemonIndex = 0;
+    if (currentPokemonIndex >= pokemonUrls.length) currentPokemonIndex = pokemonUrls.length - 1;
+
     const pokemon = await getPokemonData(pokemonUrls[currentPokemonIndex].url);
     toggleLoadingSpinner();
     openOverlayAbout(pokemon);
     toggleLoadingSpinner();
 }
 
-// Closes the Pokémon details overlay
-// Check id 
+// Closes the overlay if the user clicks the background or close button
 function closeOverlay(event, index) {
     if (event.target.id === 'overlay') {
         overlay.classList.add('d-none');
@@ -121,7 +131,8 @@ function closeOverlay(event, index) {
     }
 }
 
-// Displays the about section of the selected Pokémon in the overlay
+//############# About-Section ###############
+// Displays the "About" section in the Pokémon overlay
 function showPokemonAbout(pokemon) {
     let pokemonDescription = document.getElementById('pokemon-description-content');
     pokemonDescription.innerHTML = templateAboutPokemon(pokemon);
@@ -129,8 +140,9 @@ function showPokemonAbout(pokemon) {
     pokemonAboutAbility(pokemon);
 }
 
+// Shows the type(s) of a Pokémon in the overlay
 function pokemonAboutType(pokemon) {
-    let overlayType = document.getElementById("overlay_typ_" + pokemon.id)
+    let overlayType = document.getElementById("overlay_typ_" + pokemon.id);
     for (let i = 0; i < pokemon.types.length; i++) {
         let element = pokemon.types[i];
         overlayType.innerHTML += templatePokemonOverlayType(element);
@@ -140,8 +152,9 @@ function pokemonAboutType(pokemon) {
     }
 }
 
+// Shows the ability/abilities of a Pokémon in the overlay
 function pokemonAboutAbility(pokemon) {
-    let overlayAbility = document.getElementById("overlay_ability_" + pokemon.id)
+    let overlayAbility = document.getElementById("overlay_ability_" + pokemon.id);
     for (let i = 0; i < pokemon.abilities.length; i++) {
         let element = pokemon.abilities[i].ability.name;
         overlayAbility.innerHTML += templatePokemonOverlayAbility(element);
@@ -150,17 +163,18 @@ function pokemonAboutAbility(pokemon) {
         }
     }
 }
+//###################################################
 
-
-//Is executed in the openOverlay function
+// Displays base stats of the Pokémon in the overlay
 function showPokemonBaseStats(pokemon) {
     let descriptionContent = document.getElementById('pokemon-description-content');
     let baseStatsData = pokemon.stats;
     for (let i = 0; i < baseStatsData.length; i++) {
-        descriptionContent.innerHTML += templateBaseStats(baseStatsData[i])
+        descriptionContent.innerHTML += templateBaseStats(baseStatsData[i]);
     }
 }
 
+// Handles user search input for Pokémon
 async function searchPokemon() {
     const inputData = getInput().toLowerCase();
 
@@ -175,10 +189,12 @@ async function searchPokemon() {
     await displayFilteredPokemon(filtered);
 }
 
+// Returns true if the search input is empty
 function shouldResetSearch(input) {
     return input === "";
 }
 
+// Resets the search state and reloads the Pokémon list
 async function resetSearch() {
     content.innerHTML = "";
     offset = 0;
@@ -186,12 +202,14 @@ async function resetSearch() {
     showLoadBtn();
 }
 
+// Filters Pokémon names that start with the given query
 function filterPokemon(query) {
     return pokemonUrls.filter(p =>
         p.name.toLowerCase().startsWith(query)
     );
 }
 
+// Displays the search result Pokémon
 async function displayFilteredPokemon(filtered) {
     content.innerHTML = "";
     removeLoadBtn();
@@ -204,7 +222,7 @@ async function displayFilteredPokemon(filtered) {
     toggleLoadingSpinner();
 }
 
-//create the pokemon card for pokemon search content
+// Fetches and renders a single Pokémon card
 async function renderPokemonCard(url) {
     try {
         const data = await getPokemonData(url);
@@ -216,13 +234,13 @@ async function renderPokemonCard(url) {
     }
 }
 
-// gets the name of the entered pokemon
+// Gets the user's input value from the search input field
 function getInput() {
     const input = document.getElementById("search_input");
     return input.value.toLowerCase().trim();
 }
 
-//create the pokemon card
+// Creates the DOM element for a Pokémon card
 function createPokemonCard(data) {
     const card = document.createElement("div");
     const mainType = data.types[0].type.name;

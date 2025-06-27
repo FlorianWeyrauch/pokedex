@@ -37,10 +37,10 @@ function showAboutBg() {
 }
 
 function showStatsBg() {
-    let about = document.getElementById('about');
     let stats = document.getElementById('stats');
-    stats.classList.add('overlay-description-content-stats');
-    about.classList.remove('overlay-description-content-about')
+    let about = document.getElementById('about');
+    about.classList.remove('primary-bg-color');
+    stats.classList.add('primary-bg-color');
 }
 
 function playPokemonAudio(audioUrl) {
