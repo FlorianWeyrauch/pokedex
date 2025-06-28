@@ -38,7 +38,6 @@ async function loadCurrentPokemon(startIndex, endIndex) {
             console.error(err);
         }
     }
-    console.log(datas);
     return datas;
 }
 
