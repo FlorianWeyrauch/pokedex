@@ -28,17 +28,20 @@ async function getPokemonData(url) {
 
 // Loads a batch of Pokémon data (default: 20) starting from a given index
 async function loadCurrentPokemon(startIndex, endIndex) {
-    const datas = [];
+    // const datas = [];
     const slice = pokemonUrls.slice(startIndex, endIndex);
     for (let i = 0; i < slice.length; i++) {
         try {
-            const data = await getPokemonData(slice[i].url);
-            datas.push(data);
+            // const data = await getPokemonData(slice[i].url);
+            // datas.push(data);
+            const datas = await Promise.all(slice.map(p => getPokemonData(p.url)));
+            return datas;
         } catch (err) {
             console.error(err);
+            return [];
         }
     }
-    return datas;
+    //return datas;
 }
 
 // Loads the next group of Pokémon and displays them
